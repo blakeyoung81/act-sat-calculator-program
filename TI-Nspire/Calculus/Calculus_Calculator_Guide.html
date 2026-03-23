@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculus Calculator Program — Complete Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; line-height: 1.5; padding: 40px; max-width: 850px; margin: 0 auto; }
+  h1 { font-size: 28px; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 8px; margin-bottom: 6px; }
+  .subtitle { color: #555; font-size: 14px; margin-bottom: 30px; }
+  h2 { font-size: 22px; color: #1a5276; margin-top: 36px; margin-bottom: 12px; border-left: 4px solid #1a5276; padding-left: 12px; }
+  .tool { background: #f4f8fc; border: 1px solid #c8d8e8; border-radius: 8px; padding: 16px; margin-bottom: 18px; page-break-inside: avoid; }
+  .tool-name { font-weight: 700; font-size: 15px; color: #1a5276; margin-bottom: 4px; }
+  .tool-desc { font-size: 13px; color: #444; margin-bottom: 8px; }
+  .inputs { font-size: 12px; color: #666; margin-bottom: 8px; }
+  .inputs code { background: #dce8f4; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+  .practice { background: #fffde6; border-left: 3px solid #e6b800; padding: 10px 14px; margin-top: 8px; border-radius: 0 6px 6px 0; }
+  .practice-label { font-weight: 700; font-size: 12px; color: #b38f00; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .practice p { font-size: 13px; margin-bottom: 4px; }
+  .answer { font-size: 12px; color: #1a5276; font-weight: 600; }
+  .read-card { background: #f0f4ff; border: 1px solid #c0d0f0; border-radius: 8px; padding: 14px; margin-bottom: 16px; page-break-inside: avoid; }
+  .read-name { font-weight: 700; font-size: 14px; color: #334; margin-bottom: 4px; }
+  .read-desc { font-size: 13px; color: #444; }
+  .toc { background: #f0f4f8; border-radius: 8px; padding: 16px 20px; margin-bottom: 30px; }
+  .toc h3 { margin-top: 0; color: #1a5276; }
+  .toc ul { list-style: none; padding-left: 0; column-count: 2; column-gap: 20px; }
+  .toc li { font-size: 13px; margin-bottom: 3px; }
+  .toc a { color: #1a5276; text-decoration: none; }
+  .note { background: #e3f0fa; border-radius: 6px; padding: 10px 14px; font-size: 12px; color: #1a5276; margin: 12px 0; }
+  @media print { body { padding: 20px; } .tool, .read-card { page-break-inside: avoid; } h2 { page-break-before: always; } h2:first-of-type { page-break-before: avoid; } }
+</style>
+</head>
+<body>
+
+<h1>Calculus Calculator Program — Complete Guide</h1>
+<p class="subtitle">TI-Nspire Toolkit · IvyTutoring.net · Practice Questions & Explanations for Every Function</p>
+
+<div class="note">
+  <strong>How to use:</strong> Select a tool from the menu, enter values, press Enter. All tools use the TI-Nspire CAS engine for symbolic computation. Press Esc to go back. This guide covers AP Calculus AB and BC.
+</div>
+
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#limits">1. Limits</a></li>
+    <li><a href="#deriv">2. Derivatives</a></li>
+    <li><a href="#appderiv">3. Applications of Derivatives</a></li>
+    <li><a href="#integ">4. Integrals</a></li>
+    <li><a href="#appinteg">5. Applications of Integrals</a></li>
+    <li><a href="#series">6. Series & Sequences (BC)</a></li>
+    <li><a href="#diffeq">7. Differential Equations</a></li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="limits">1. Limits</h2>
+
+<div class="tool">
+  <div class="tool-name">Evaluate Limit</div>
+  <div class="tool-desc">Computes lim f(x) as x→a using CAS. Works for indeterminate forms (0/0, ∞/∞) via L'Hôpital.</div>
+  <div class="inputs">Inputs: <code>f(x)= sin(x)/x</code> <code>x → 0</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find lim (x² − 4)/(x − 2) as x → 2.</p>
+    <p>Enter: <code>f(x)= (x^2-4)/(x-2)</code> <code>x → 2</code></p>
+    <p class="answer">Answer: 4</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">One-Sided Limits</div>
+  <div class="tool-desc">Computes left-hand limit (x→a⁻), right-hand limit (x→a⁺), and two-sided limit.</div>
+  <div class="inputs">Inputs: <code>f(x)= 1/x</code> <code>x → 0</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Evaluate: lim |x|/x as x → 0 from the left and right.</p>
+    <p>Enter: <code>f(x)= abs(x)/x</code> <code>x → 0</code></p>
+    <p class="answer">Answer: Left = −1, Right = 1, Two-sided DNE</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Limit at Infinity</div>
+  <div class="tool-desc">Finds lim f(x) as x→+∞ and x→−∞. Also identifies horizontal asymptotes.</div>
+  <div class="inputs">Input: <code>f(x)= (3x^2+1)/(x^2-5)</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>What is the horizontal asymptote of f(x) = (5x − 1)/(2x + 3)?</p>
+    <p class="answer">Answer: y = 5/2 (lim as x → ±∞ is 5/2)</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Continuity Test</div>
+  <div class="tool-desc">Three-step check: f(a) exists, lim exists, f(a) = lim.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>at x= 3</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Is f(x) = (x² − 1)/(x − 1) continuous at x = 1?</p>
+    <p>Enter: <code>f(x)= (x^2-1)/(x-1)</code> <code>at x= 1</code></p>
+    <p class="answer">Answer: f(1) undefined, lim = 2 → NOT continuous</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Limit Laws</div>
+  <div class="read-desc">Sum, product, quotient rules · Squeeze Theorem · L'Hôpital's Rule · Common limits: sin(x)/x → 1, (1+1/n)ⁿ → e</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="deriv">2. Derivatives</h2>
+
+<div class="tool">
+  <div class="tool-name">Derivative</div>
+  <div class="tool-desc">Symbolic first and second derivatives via CAS. Shows simplified form.</div>
+  <div class="inputs">Input: <code>f(x)= x^3+2x</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find f′(x) for f(x) = 3x⁴ − 2x² + 5x.</p>
+    <p class="answer">Answer: f′(x) = 12x³ − 4x + 5</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">n-th Derivative</div>
+  <div class="tool-desc">Computes derivatives up to the n-th order (max 6 shown).</div>
+  <div class="inputs">Inputs: <code>f(x)= sin(x)</code> <code>n= 4</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>What is the 4th derivative of sin(x)?</p>
+    <p class="answer">Answer: f⁽⁴⁾(x) = sin(x) (cycles every 4)</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Derivative at a Point</div>
+  <div class="tool-desc">Evaluates f(a) and f′(a) — the slope at a specific x-value.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2+1</code> <code>at x= 3</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>What is the instantaneous rate of change of f(x) = √x at x = 9?</p>
+    <p>Enter: <code>f(x)= sqrt(x)</code> <code>at x= 9</code></p>
+    <p class="answer">Answer: f′(9) = 1/(2√9) = 1/6</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Implicit Differentiation</div>
+  <div class="tool-desc">Finds dy/dx from an implicit equation using impDif().</div>
+  <div class="inputs">Input: <code>x^2+y^2=25</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find dy/dx for x³ + y³ = 6xy.</p>
+    <p>Enter: <code>x^3+y^3=6x*y</code></p>
+    <p class="answer">Answer: dy/dx = (6y − 3x²)/(3y² − 6x)</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Derivative Rules</div>
+  <div class="read-desc">Power, Product, Quotient, Chain rules · d/dx[eˣ] = eˣ · d/dx[ln x] = 1/x · d/dx[aˣ] = aˣln(a)</div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Trig Derivatives</div>
+  <div class="read-desc">d/dx[sin x] = cos x · d/dx[cos x] = −sin x · d/dx[tan x] = sec²x · Inverse trig: d/dx[arctan x] = 1/(1+x²)</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="appderiv">3. Applications of Derivatives</h2>
+
+<div class="tool">
+  <div class="tool-name">Tangent / Normal Line</div>
+  <div class="tool-desc">Finds the tangent line y = mx + b and normal line (perpendicular) at a point.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>at x= 2</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the equation of the tangent line to f(x) = x³ at x = 1.</p>
+    <p>Enter: <code>f(x)= x^3</code> <code>at x= 1</code></p>
+    <p class="answer">Answer: y = 3x − 2 (slope = 3, point (1, 1))</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Critical Points & Extrema</div>
+  <div class="tool-desc">Sets f′(x) = 0, finds zeros, applies 2nd Derivative Test to classify each as local max, min, or inconclusive.</div>
+  <div class="inputs">Input: <code>f(x)= x^3-3x</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the local extrema of f(x) = x³ − 12x.</p>
+    <p>Enter: <code>x^3-12x</code></p>
+    <p class="answer">Answer: x = −2 → local max (f = 16), x = 2 → local min (f = −16)</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Inflection Points</div>
+  <div class="tool-desc">Sets f″(x) = 0, finds where concavity changes.</div>
+  <div class="inputs">Input: <code>f(x)= x^4-6x^2</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the inflection points of f(x) = x³ − 3x² + 2.</p>
+    <p>Enter: <code>x^3-3x^2+2</code></p>
+    <p class="answer">Answer: Inflection at (1, 0); f″ = 6x − 6, f″ = 0 at x = 1</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Mean Value Theorem</div>
+  <div class="tool-desc">Finds the average rate of change on [a,b] and solves f′(c) = average rate to find c.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>a= 1</code> <code>b= 3</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>For f(x) = x² on [0, 4], find c where f′(c) equals the average rate.</p>
+    <p class="answer">Answer: Average = (16−0)/4 = 4, f′(c) = 2c = 4, so c = 2</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Linear Approximation</div>
+  <div class="tool-desc">L(x) = f(a) + f′(a)(x − a). Estimates f(x) near x = a.</div>
+  <div class="inputs">Inputs: <code>f(x)= sqrt(x)</code> <code>at x= 4</code> <code>estimate x= 4.1</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Use linear approximation to estimate √4.1.</p>
+    <p>Enter: <code>f(x)= sqrt(x)</code> <code>at x= 4</code> <code>estimate x= 4.1</code></p>
+    <p class="answer">Answer: L(4.1) = 2 + (1/4)(0.1) = 2.025 (exact: 2.0248…)</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Related Rates Helper</div>
+  <div class="tool-desc">Sets up an implicit differentiation step for related rates problems.</div>
+  <div class="inputs">Inputs: <code>Equation= x^2+y^2=25</code> <code>dx/dt= 3</code> <code>at x= 3</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>A circle has x² + y² = 100. If dx/dt = 2 when x = 6, find dy/dt.</p>
+    <p class="answer">Answer: dy/dx = −x/y = −6/8, dy/dt = (−6/8)(2) = −1.5</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Optimization Steps</div>
+  <div class="read-desc">1. Diagram → 2. Identify max/min → 3. Objective function → 4. Reduce to 1 variable → 5. f′ = 0 → 6. Verify → 7. Answer</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="integ">4. Integrals</h2>
+
+<div class="tool">
+  <div class="tool-name">Indefinite Integral</div>
+  <div class="tool-desc">Symbolic antiderivative via CAS. Returns F(x) + C.</div>
+  <div class="inputs">Input: <code>f(x)= x^2+3x</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find ∫(6x² − 4x + 1) dx.</p>
+    <p>Enter: <code>6x^2-4x+1</code></p>
+    <p class="answer">Answer: 2x³ − 2x² + x + C</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Definite Integral</div>
+  <div class="tool-desc">Exact symbolic result + decimal approximation. Shows antiderivative.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>a= 0</code> <code>b= 3</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Evaluate ∫₀² (x³ − x) dx.</p>
+    <p>Enter: <code>x^3-x</code> <code>a=0</code> <code>b=2</code></p>
+    <p class="answer">Answer: [x⁴/4 − x²/2]₀² = 4 − 2 = 2</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">u-Substitution</div>
+  <div class="tool-desc">Shows the substitution steps: u, du/dx, du. Then integrates via CAS.</div>
+  <div class="inputs">Inputs: <code>f(x)= 2x*cos(x^2)</code> <code>u= x^2</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find ∫ 3x²·eˣ³ dx using u = x³.</p>
+    <p>Enter: <code>3x^2*e^(x^3)</code> <code>u= x^3</code></p>
+    <p class="answer">Answer: du = 3x²dx → ∫eᵘ du = eˣ³ + C</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Integration by Parts</div>
+  <div class="tool-desc">∫u dv = uv − ∫v du. Shows u, du, dv, v breakdown and final result.</div>
+  <div class="inputs">Inputs: <code>f(x)= x*e^x</code> <code>u= x</code> <code>dv= e^x</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find ∫ x·sin(x) dx.</p>
+    <p>Enter: <code>x*sin(x)</code> <code>u= x</code> <code>dv= sin(x)</code></p>
+    <p class="answer">Answer: −x·cos(x) + sin(x) + C</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Integration Rules & Trig Integrals</div>
+  <div class="read-desc">Power rule, ∫eˣ = eˣ, ∫1/x = ln|x|, trig integrals, LIATE mnemonic for by-parts, trig substitution patterns</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="appinteg">5. Applications of Integrals</h2>
+
+<div class="tool">
+  <div class="tool-name">Area Between Curves</div>
+  <div class="tool-desc">Area = ∫|f(x) − g(x)| dx from a to b.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>g(x)= x</code> <code>a= 0</code> <code>b= 1</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the area between y = x² and y = x from x = 0 to x = 1.</p>
+    <p class="answer">Answer: ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = 1/6</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Volume: Disk/Washer Method</div>
+  <div class="tool-desc">V = π∫[R(x)² − r(x)²] dx. Enter outer and inner radii.</div>
+  <div class="inputs">Inputs: <code>R(x)= sqrt(x)</code> <code>r(x)= 0</code> <code>a= 0</code> <code>b= 4</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the volume when y = √x is rotated about the x-axis from 0 to 4.</p>
+    <p class="answer">Answer: V = π∫₀⁴ x dx = π[x²/2]₀⁴ = 8π</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Volume: Shell Method</div>
+  <div class="tool-desc">V = 2π∫x·f(x) dx. For rotation about the y-axis.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>a= 0</code> <code>b= 2</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the volume when y = x² (0 ≤ x ≤ 2) is rotated about the y-axis.</p>
+    <p class="answer">Answer: V = 2π∫₀² x³ dx = 2π[x⁴/4]₀² = 8π</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Average Value of Function</div>
+  <div class="tool-desc">f_avg = 1/(b−a) · ∫f(x) dx from a to b.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^2</code> <code>a= 0</code> <code>b= 3</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the average value of f(x) = sin(x) on [0, π].</p>
+    <p>Enter: <code>sin(x)</code> <code>a= 0</code> <code>b= pi</code></p>
+    <p class="answer">Answer: (1/π)·∫₀ᵖ sin(x) dx = (1/π)(2) = 2/π ≈ 0.637</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Arc Length</div>
+  <div class="tool-desc">L = ∫√(1 + [f′(x)]²) dx from a to b.</div>
+  <div class="inputs">Inputs: <code>f(x)= x^(3/2)</code> <code>a= 0</code> <code>b= 4</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the arc length of y = x^(3/2) from x = 0 to x = 4.</p>
+    <p class="answer">Answer: f′ = (3/2)x^(1/2), L = ∫₀⁴ √(1 + 9x/4) dx ≈ 9.073</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Fundamental Theorem of Calculus</div>
+  <div class="read-desc">FTC 1: d/dx ∫ₐˣ f(t)dt = f(x) · FTC 2: ∫ₐᵇ f(x)dx = F(b) − F(a) · MVT for Integrals: f(c) = f_avg</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="series">6. Series & Sequences (BC Topics)</h2>
+
+<div class="tool">
+  <div class="tool-name">Taylor Polynomial</div>
+  <div class="tool-desc">Generates the n-th degree Taylor polynomial about x = a using CAS taylor().</div>
+  <div class="inputs">Inputs: <code>f(x)= e^x</code> <code>about a= 0</code> <code>order= 5</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the 4th-degree Maclaurin polynomial for cos(x).</p>
+    <p>Enter: <code>cos(x)</code> <code>a= 0</code> <code>order= 4</code></p>
+    <p class="answer">Answer: P₄(x) = 1 − x²/2 + x⁴/24</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Partial Sum of Series</div>
+  <div class="tool-desc">Computes Σ a(n) from n = a to n = b using CAS sum().</div>
+  <div class="inputs">Inputs: <code>a(n)= 1/n^2</code> <code>from n= 1</code> <code>to n= 100</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Estimate Σ 1/n² from n = 1 to 1000 (should approach π²/6 ≈ 1.6449).</p>
+    <p class="answer">Answer: S ≈ 1.6439 (exact limit = π²/6)</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Geometric Series</div>
+  <div class="tool-desc">Finite sum S(n) = a(1−rⁿ)/(1−r). If |r| < 1, shows S(∞) = a/(1−r).</div>
+  <div class="inputs">Inputs: <code>a= 1</code> <code>r= 0.5</code> <code>n= 10</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Find the sum of 3 + 3/2 + 3/4 + 3/8 + … (infinite geometric series).</p>
+    <p>Enter: <code>a= 3</code> <code>r= 0.5</code></p>
+    <p class="answer">Answer: S(∞) = 3/(1−0.5) = 6</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Power Series</div>
+  <div class="tool-desc">Expands f(x) as a power series (6 terms) using CAS taylor().</div>
+  <div class="inputs">Inputs: <code>f(x)= 1/(1-x)</code> <code>about a= 0</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Express eˣ as a power series about x = 0 (6 terms).</p>
+    <p>Enter: <code>e^x</code> <code>a= 0</code></p>
+    <p class="answer">Answer: 1 + x + x²/2 + x³/6 + x⁴/24 + x⁵/120 + …</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Convergence Tests</div>
+  <div class="read-desc">n-th Term · Geometric (|r|<1) · p-Series (p>1) · Integral · Comparison · Limit Comparison · Ratio · Alternating Series</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="diffeq">7. Differential Equations</h2>
+
+<div class="tool">
+  <div class="tool-name">Solve ODE</div>
+  <div class="tool-desc">Uses CAS deSolve() to find the general or particular solution of a first-order ODE.</div>
+  <div class="inputs">Inputs: <code>ODE= y'=2x</code> <code>IC: y(0)=1</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Solve dy/dx = 3x² with y(0) = 5.</p>
+    <p>Enter: <code>y'=3x^2</code> <code>IC: y(0)=5</code></p>
+    <p class="answer">Answer: y = x³ + 5</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Euler's Method</div>
+  <div class="tool-desc">Step-by-step numerical ODE approximation. Shows (x, y) and slope at each step.</div>
+  <div class="inputs">Inputs: <code>dy/dx= x+y</code> <code>x0= 0</code> <code>y0= 1</code> <code>h= 0.1</code> <code>steps= 5</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Use Euler's method with h = 0.5 and 4 steps for dy/dx = y, y(0) = 1.</p>
+    <p>Enter: <code>dy/dx= y</code> <code>x0=0</code> <code>y0=1</code> <code>h=0.5</code> <code>steps=4</code></p>
+    <p class="answer">Answer: y(2) ≈ 5.0625 (exact: e² ≈ 7.389)</p>
+  </div>
+</div>
+
+<div class="tool">
+  <div class="tool-name">Separation of Variables</div>
+  <div class="tool-desc">Solves separable ODEs using CAS deSolve().</div>
+  <div class="inputs">Input: <code>dy/dx= y*x</code></div>
+  <div class="practice">
+    <div class="practice-label">Practice Question</div>
+    <p>Solve dy/dx = y·cos(x).</p>
+    <p>Enter: <code>y*cos(x)</code></p>
+    <p class="answer">Answer: y = Ce^(sin(x))</p>
+  </div>
+</div>
+
+<div class="read-card">
+  <div class="read-name">📖 Common Differential Equations</div>
+  <div class="read-desc">Separable · Linear 1st order with integrating factor · Exponential growth/decay dy/dt = ky · Logistic dy/dt = ky(1−y/L) · Slope fields</div>
+</div>
+
+<div style="margin-top:40px; padding-top:20px; border-top: 2px solid #1a5276; text-align:center; color:#888; font-size:12px;">
+  <p><strong>Calculus Calculator Program for TI-Nspire</strong> · IvyTutoring.net</p>
+  <p>Covers AP Calculus AB and BC</p>
+</div>
+
+</body>
+</html>
